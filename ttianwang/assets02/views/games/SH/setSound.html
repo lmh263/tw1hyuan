@@ -1,0 +1,36 @@
+<script id="setSoundTemp" type="text/html">
+    <div class="window">
+        <div class="close"></div>
+        <div class="content">
+            <div class="setbgm">
+                <div class="tit fl">背景音乐：</div>
+                <div class="btn fl" stype="musicVolume">
+                    <div class="box fl">
+                        <img src="{{STATICSRC}}images/game/SH/popups/gou.png">
+                    </div>
+                    <div class="fr text">开启</div>
+                </div>
+            </div>
+            <div class="setsfx">
+                <div class="tit fl">游戏音效：</div>
+                <div class="btn fl" stype="soundVolume">
+                    <div class="box fl">
+                        <img src="{{STATICSRC}}images/game/SH/popups/gou.png">
+                    </div>
+                    <div class="fr text">开启</div>
+                </div>
+            </div>
+        </div>
+        <div class="done">确认</div>
+    </div>
+</script>
+<div class="setSound" id="setSound">
+
+</div>
+<script>
+    var data = {
+        STATICSRC:STATICSRC,
+    };
+    var html = template("setSoundTemp",data);
+    document.getElementById('setSound').innerHTML = html;
+</script>

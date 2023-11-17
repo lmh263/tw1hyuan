@@ -1,0 +1,43 @@
+<script id="comparisonCardTemp" type="text/html">
+    <div class="window">
+        <div class="winner">
+            <div class="player">
+                <div class="nikename">阿诗丹顿</div>
+                <div class="avatar">
+                    <img src="" alt="">
+                </div>
+                <div class="score">0</div>
+            </div>
+        </div>
+        <div class="loser">
+            <div class="player">
+                <div class="nikename">阿诗丹顿</div>
+                <div class="avatar">
+                    <img src="" alt="">
+                </div>
+                <div class="score">0</div>
+                <div class="loseImg"></div>
+            </div>
+        </div>
+        <div class="sdbox">
+            <div class="sd0"></div>
+            <div class="sd1"></div>
+            <div class="sd2"></div>
+            <div class="sd0 sd3"></div>
+        </div>
+        <div class="vs">
+            <div class="v"></div>
+            <div class="s"></div>
+        </div>
+    </div>
+</script>
+<div class="comparisonCard" id="comparisonCard">
+
+</div>
+<script>
+    var data = {
+        STATICSRC:STATICSRC,
+    };
+    var html = template("comparisonCardTemp",data);
+    document.getElementById('comparisonCard').innerHTML = html;
+</script>

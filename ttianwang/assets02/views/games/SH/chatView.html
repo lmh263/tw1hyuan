@@ -1,0 +1,18 @@
+<script id="chatViewTemp" type="text/html">
+    <div class="bg"></div>
+    <div class="window">
+        <div class="list">
+
+        </div>
+    </div>
+</script>
+<div class="chatView" id="chatView">
+
+</div>
+<script>
+	var data = {
+		STATICSRC:STATICSRC,
+	};
+	var html = template("chatViewTemp",data);
+	document.getElementById('chatView').innerHTML = html;
+</script>

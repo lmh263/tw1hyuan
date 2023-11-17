@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="http://syzy.womai.la/ttianwang/tw004/css/style.css">
+    <link rel="stylesheet" type="text/css" href="http://syzy.womai.la/ttianwang/tw004/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="http://syzy.womai.la/ttianwang/tw004/css/hall/gameRecord.css" />
+    <script src="http://syzy.womai.la/ttianwang/assets02/js/tools/Tool/flexible.js"></script>
+    <title>游戏记录</title>
+    <script type="text/javascript" src="/js/config.js"> </script>
+    <script type="text/javascript" src="http://syzy.womai.la/ttianwang/load.js"> </script>
+
+</head>
+
+<body>
+    <div class="sliderHeader">
+        <div class="sliderItem fl">
+            <div class="gameHallImg"></div>
+            <div class="gameHallTitle">全部游戏</div>
+        </div>
+    </div>
+    <div class="RecordMain">
+        <div class="header">
+            <div class="fl">房间号</div>
+            <div class="fl">结束时间</div>
+            <div class="fl">当局积分</div>
+        </div>
+        <div class="RecordContent" id="lbody">
+            
+
+            
+
+        </div>
+        <div class="addMore">点击加载更多</div>
+    </div>
+    <div class="backBox">
+        <div class="back">返回</div>
+    </div>
+    <script src="http://syzy.womai.la/ttianwang/assets02/js/lib/jquery2.1.4.js"></script>
+    <script src="http://syzy.womai.la/ttianwang/assets02/js/src/hall/gameRecord.js"></script>
+    <script type="text/javascript">
+
+        var obj = DynLoading.hall(BaseUrl + '/game_log');
+
+        for(var v in obj)
+		{
+			var vo=obj[v]
+			var dv = document.createElement("div");
+			
+			var html = `
+			<div class="gameL fl">
+                <div class="gameNum">
+                    ${vo.room_id} 
+                </div>
+                <div class="gameName">${vo.type}</div>
+            </div>
+            <div class="overTimer fl">${vo.time}</div>
+            <div class="curSource fl">
+                ${vo.score} 
+            </div>
+			`;
+			dv.className="RecordItem";
+			dv.innerHTML = html;
+            dv.onclick=function(zj,id){
+                return function(){
+                    a(zj,id)
+                    
+                }
+            }(vo.zj,vo.room_id)
+			document.getElementById("lbody").appendChild(dv);
+		}
+
+        function a(zj,id) {
+            window.location.href ='/'+zj+'?id='+id
+        }
+    </script>
+</body>
+
+</html>

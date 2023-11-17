@@ -1,0 +1,22 @@
+<script id="gameRulerTemp2" type="text/html">
+    <div class="window" style="width: 90vw">
+        <div class="close"></div>
+        <div class="title">
+            <img src="{{STATICSRC}}images/game/SH/popups/game_rule2.png">
+        </div>
+        <div class="content" style="background-color: #fff;max-height: 50vh;overflow: scroll;padding: .2rem;box-sizing: border-box;">
+            <img width="100%" src="" alt="">
+            <p style="text-align: center; height: 15vh;line-height: 15vh" class="tips">暂无玩法展示</p>
+        </div>
+    </div>
+</script>
+<div class="gameRuler" id="gameRuler">
+
+</div>
+<script>
+    var data = {
+        STATICSRC:STATICSRC,
+    };
+    var html = template("gameRulerTemp2",data);
+    document.getElementById('gameRuler').innerHTML = html;
+</script>

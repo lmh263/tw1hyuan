@@ -1,0 +1,19 @@
+<script id="publicPopTemp" type="text/html">
+    <div class="window">
+        <div class="content">确定返回主页?</div>
+        <div class="btnBox">
+            <div class="btn fl done">返回主页</div>
+            <div class="btn fl cancel">取消</div>
+        </div>
+    </div>
+</script>
+<div class="publicPop" id="publicPop">
+
+</div>
+<script>
+	var data = {
+		STATICSRC:STATICSRC,
+	};
+	var html = template("publicPopTemp",data);
+	document.getElementById('publicPop').innerHTML = html;
+</script>

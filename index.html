@@ -1,0 +1,232 @@
+<!doctype html>
+<html style="overflow:hidden">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<script type="text/javascript" src="/js/config.js"> </script>
+    	<script type="text/javascript" src="http://syzy.womai.la/ttianwang/load.js"> </script>
+    	<script type="text/javascript" src="http://syzy.womai.la/ttianwang/dt.js"> </script>
+
+		<link rel="stylesheet" href="http://syzy.womai.la/ttianwang/tw004/css/style.css?20200329">
+		<link rel="stylesheet" type="text/css" href="http://syzy.womai.la/ttianwang/tw004/css/public.css?20200329" />
+		<link rel="stylesheet" type="text/css" href="http://syzy.womai.la/ttianwang/tw004/css/hall/footer.css?20200329" />
+		<script src="http://syzy.womai.la/ttianwang/assets02/js/tools/Tool/flexible.js?20200329"></script>
+		<script src="http://syzy.womai.la/ttianwang/assets02/js/tools/Tool/utils_tool.js?20200329"></script>
+        <script src="http://syzy.womai.la/ttianwang/jweixin-1.0.0.js"></script>
+		<script src="http://syzy.womai.la/ttianwang/assets02/js/tools/Tool/imagesloaded.pkgd.min.js?20200329"></script>
+      	<script type="text/javascript">
+			function loginout(source){
+		        
+				localStorage.removeItem('wwid')
+				window.location.reload();
+		    }
+			const bindHistoryEvent = function(type) {
+				const historyEvent = history[type];
+				return function() {
+
+					console.log('PUSH ARGS',arguments)
+
+					arguments[2]+='&dt='+obj.data.dt
+
+					const newEvent = historyEvent.apply(this, arguments); //执行history函数
+				    const e = new Event(type);  //声明自定义事件
+					e.arguments = arguments;
+					window.dispatchEvent(e);  //抛出事件
+					return newEvent;  //返回方法，用于重写history的方法
+				};
+			};
+			//history.pushState =  bindHistoryEvent('pushState');
+			//history.replaceState =  bindHistoryEvent('replaceState');
+
+			
+			  
+			 
+		</script>
+		<script>
+			wx.config({
+	          debug: false,
+	          appId: 'wxf8b4f85f3a794e77',
+	          timestamp: 1547733679,
+	          nonceStr: 'koRCjJx5b7CHhR97',
+	          signature: '456d119f021b12834e46f63cb074207c3322336d',
+	          jsApiList: [
+	              'checkJsApi',
+	              'onMenuShareTimeline',
+	              'onMenuShareAppMessage',
+	              'onMenuShareQQ',
+	              'onMenuShareWeibo',
+	              'onMenuShareQZone',
+	              'hideMenuItems',
+	              'showMenuItems',
+	              'hideAllNonBaseMenuItem',
+	              'showAllNonBaseMenuItem',
+	              'translateVoice',
+	              'startRecord',
+	              'stopRecord',
+	              'onVoiceRecordEnd',
+	              'playVoice',
+	              'onVoicePlayEnd',
+	              'pauseVoice',
+	              'stopVoice',
+	              'uploadVoice',
+	              'downloadVoice',
+	              'chooseImage',
+	              'previewImage',
+	              'uploadImage',
+	              'downloadImage',
+	              'getNetworkType',
+	              'openLocation',
+	              'getLocation',
+	              'hideOptionMenu',
+	              'showOptionMenu',
+	              'closeWindow',
+	              'scanQRCode',
+	              'chooseWXPay',
+	              'openProductSpecificView',
+	              'addCard',
+	              'chooseCard',
+	              'openCard'
+	          ]
+	        });
+	        wx.ready(function () {
+	            // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+	            wx.hideOptionMenu();
+	        });
+			// PHP接收数据 ，IP，port，大厅名字，账户，密码
+			var hostip = obj.data.ip;
+			localStorage.setItem('hostip', hostip);
+
+			var hostport = obj.data.port;
+            localStorage.setItem('hostport', hostport);
+			
+			window.hall_src=obj.data.hall_src
+			
+            var tw_openid=obj.data.user.openid
+
+			var pw = "stPDOkegnFSK.";
+			var curPlayerPsw = pw;
+			// localStorage.setItem('pw', pw);
+
+			var isOpenGm = obj.data.club_on;
+			isOpenGm = isOpenGm == "" ? false : isOpenGm;
+			localStorage.setItem('isOpenGm', isOpenGm);
+
+			var uid = obj.data.user.id;
+			var curPlayerUid = uid;
+			localStorage.setItem("uid", uid);
+			localStorage.setItem("curPlayerUid", uid);
+
+			var titlename = obj.data.title;
+			localStorage.setItem('gameHallTitle', titlename);
+			//console.log(hostip,hostport,pw,openid,titlename);
+			var staticRoute = "http://syzy.womai.la/ttianwang/tw004/";
+			localStorage.setItem('staticRoute', staticRoute);
+			var staticProto = "http://syzy.womai.la/ttianwang/assets02/static/proto08/";
+
+			localStorage.setItem('staticProto', staticProto);
+			document.title = titlename;
+			var clubNo = qclubNo;
+			localStorage.setItem('joinClubNo', clubNo);
+			var timestamp = "20200329";
+			var referrerid = qtj;
+			localStorage.setItem('referrerid', referrerid);
+			var joinClubNum = parseInt(qjcn);
+			var agreement = "";
+			var joinUid = parseInt(qjoinUid);
+			var bagid = parseInt(qbgid);
+			var bagkey = qbgkey;
+			var zhuo = obj.data.table_back;
+			var is_ss = obj.data.is_ss;
+			var is_mg = obj.data.is_mg;
+			var is_sx = obj.data.is_sx;
+			var no_showhand = obj.data.no_showhand;
+			var cur_dt = obj.data.dt;
+
+			localStorage.setItem('cur_dt',cur_dt);
+
+			globalData={
+				roomNumber:qroomid,
+				hallName:obj.data.title,
+			}
+
+		</script>
+		<title>加载中...</title>
+	</head>
+
+	<body style="overflow:hidden">
+        <div id="qrcode" style="display: none; position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 111;"><div onclick="hideQrCode()" style="background: rgba(0, 0, 0, 0.5); position: fixed; top: 0px; left: 0px; width: 100%; height: 100%;"></div> <div style="position: relative; width: 64vw; height: 80vw; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 0.0096rem solid rgb(145, 145, 145); border-radius: 0.096rem; transition: display 1s ease 0s; background-color: rgba(255, 255, 255, 0.2);"><div><span style="position: absolute; top: 0.1rem; left: 50%; transform: translateX(-50%); width: 70vw; text-align: center; color: rgb(255, 255, 255); font-size: 18px;">房间二维码</span> <div id="divOne"></div> <img id="imgOne" style="width: 50vw; height: 50vw; box-sizing: border-box; position: absolute; overflow: scroll; padding: 10px; background: rgb(255, 255, 255); border-radius: 4px; left: 50%; top: 48%; transform: translate(-50%, -50%);"> <span style="position: absolute; bottom: 0.25rem; left: 50%; transform: translateX(-50%); width: 70vw; text-align: center; color: rgb(255, 255, 255); font-size: 16px;">长按二维码发送</span></div></div></div>
+		<div class="banner"><div class="bannerText"></div></div>
+		<div id="ui-view"></div>
+		<div id="footer">
+			<div class="guildBtn fl">
+				<img src="http://syzy.womai.la/ttianwang/tw004/images/hall/guild.png" />
+			</div>
+			<div class="hallBtn fl">
+				<img src="http://syzy.womai.la/ttianwang/tw004/images/hall/hall.png" />
+			</div>
+			<div class="myBtn fl">
+				<img src="http://syzy.womai.la/ttianwang/tw004/images/hall/my.png" />
+			</div>
+		</div>
+		<div id="alertBox">
+			<div class="styles">
+			</div>
+			<div class="box"></div>
+		</div>
+		<div class="toast">
+			<div id="toastText"></div>
+		</div>
+		<div class="cover" style="display: none;"></div>
+		<div class="cover2" style="display: none;"></div>
+		<div id="loading">
+			<img src="http://syzy.womai.la/ttianwang/tw004/images/timg.gif" alt="">
+		</div>
+		<script type="text/html" id="error">
+			<!--可以自定义错误信息-->
+			<div>
+				{{errStatus}}
+			</div>
+			<div>
+				{{errContent}}
+			</div>
+		</script>
+		<script src="http://syzy.womai.la/ttianwang/assets02/js/tools/Tool/clipboard.min.js?20200329"></script>
+		<script src="http://syzy.womai.la/ttianwang/assets02/js/lib/sea.js?20200329"></script>
+		<script src="http://syzy.womai.la/ttianwang/assets02/js/lib/seaConfig.js?20200329"></script>
+		<script>
+			seajs.use('http://syzy.womai.la/ttianwang/assets02/js/public/main.js?20200329');
+		</script>
+
+
+		<script>
+			var poll = function ()
+			{
+				if ("undefined" == typeof jQuery) 
+				{
+					setTimeout(poll, 100);
+				}
+				else
+				{
+					var oHead = document.getElementsByTagName('head')[0]; // 在head标签中创建创建script
+					var oScript = document.createElement("script");
+					oScript.type = "text/javascript";
+					oScript.src = "http://syzy.womai.la/ttianwang/jquery.qrcode.min.js";
+					oHead.appendChild(oScript);
+	
+					oScript = document.createElement("script");
+					oScript.type = "text/javascript";
+					oScript.src = "http://syzy.womai.la/ttianwang/qrcode.js";
+					oHead.appendChild(oScript);
+	
+				}
+	
+			};
+			poll();
+		</script>
+	</body>
+</html>

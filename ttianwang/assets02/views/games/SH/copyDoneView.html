@@ -1,0 +1,13 @@
+<script id="copyDoneTemp" type="text/html">
+    <div class="window"></div>
+</script>
+<div class="copyDone" id="copyDone">
+
+</div>
+<script>
+	var data = {
+		STATICSRC:STATICSRC,
+	};
+	var html = template("copyDoneTemp",data);
+	document.getElementById('copyDone').innerHTML = html;
+</script>

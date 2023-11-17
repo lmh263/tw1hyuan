@@ -1,0 +1,240 @@
+<script id="SHgame12Temp" type="text/html">
+    <div class="wxtitle"></div>
+    <div class="desktop">
+        <div class="body" id="gameBody">
+            <div class="users" id="userList">
+                {{each userList}}
+                <div viewseat={{$value.index}} class="user {{$value.class}}">
+                    <div class="userScale">
+                        <div class="canCompare">
+
+                        </div>
+                        <div class="chat">
+                            <div class="content"></div>
+                            <div class="sanjiao"></div>
+                        </div>
+                        <div class="avatar">
+                            <img src="">
+                            <div class="chipPosi"></div>
+                            <div class="goldPosi"></div>
+                            <div class="avatar_timer">20</div>
+                        </div>
+                        <div class="jettonFen">
+                            <img src="" class="img1">
+                        </div>
+                        <div class="userBorder userBorder1"></div>
+                        <div class="userBorder2 userBorder"></div>
+                        <div class="nikename">小旭</div>
+                        <div class="score">0</div>
+                        <div class="winScore winLose">+1000000</div>
+                        <div class="winLose loseScore">-1000000</div>
+                        <div class="bankState"></div>
+                        <div class="signOut"><img width="100%" src="{{STATICSRC}}images/game/SH/player/watchzt.png" alt=""></div>
+                        <div class="showCardBox">
+                            <div class="nikename">小旭</div>
+                            <div class="pokershowBox">
+                                {{each poker}}
+                                <div class="poker fl"></div>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="winnerShow">
+                            <div class="pokerType"></div>
+                            <div class="pokerType"></div>
+                        </div>
+                    </div>
+                    <div class="readyState"></div>
+                    {{if $value.wincode != undefined}}
+                    {{@$value.wincode}}
+                    {{/if}}
+                    <div class="robBankFen">
+                        <img src="" class="img1">
+                        <img src="" class="img2">
+                    </div>
+                    <div class="poker3Box pokerBox">
+                        {{each poker}}
+                        <div class="poker fl"></div>
+                        {{/each}}
+                        {{if $value.code != undefined}}
+                        {{@$value.code}}
+                        {{/if}}
+                        <div class="lookPokerState">看</div>
+                        <div class="abandonPokerState"><div>弃</div></div>
+                        <div class="comLoseState"><div>输</div></div>
+                        <div class="pokerType"></div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="cloneEleBox">
+
+            </div>
+            <div id="operationArea">
+            </div>
+            <div class="desktopCenter">
+                <div class="stageName" id="stageName"></div>
+                <div class="clock" id="clock">5</div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="gameround" id="gameround">0/10局</div>
+            <div class="copyUrl" id="copyUrl" data-clipboard-target="#cut"></div>
+            <div class="basescore" id="basescore">底分：1分</div>
+            <div class="huibi">
+                <div class="img"></div>
+                <div id="userHuibi" class="fl">0</div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="ruler" id="rulerBtn"></div>
+            <div class="sound" id="setSoundBtn"></div>
+            <div class="gohall" id="goHallBtn"></div>
+            <div class="watch" id="watchBtn"></div>
+            <div class="chat" id="chatBtn"></div>
+            <div class="roomcard">
+                <div class="userCardNum"><div id="userCardNum">11张</div></div>
+                <div class="img"></div>
+            </div>
+            <div class="autoReady" id="autoReadyBtn" data-status="false">
+                <img src="{{STATICSRC}}images/game/SH/desktop/autoReady_0.png" alt="">
+            </div>
+        </div>
+        <div id="chipPool">
+
+        </div>
+        <div class="chipsBox">
+            <div class="box">
+                <div class="icon"></div>
+                <span>0</span>
+            </div>
+        </div>
+
+        <button class="setPoker">设置牌</button>
+        <div class="setpokerView">
+            <input type="text" id="setpokerInput">
+            <button id="sendSetPoker">发送</button>
+        </div>
+    </div>
+    <div class="Preloading" style="display: none">
+        {{each pokerImg}}
+        <img src="{{STATICSRC}}images/game/SH/poker/{{$value}}.png" alt="">
+        {{/each}}
+    </div>
+</script>
+
+<div id="SHgame">
+
+</div>
+<script>
+    var data = {
+        STATICSRC:STATICSRC,
+        poker:[1,2,3],
+        pokerImg:[
+            "1.1",
+            "2.1",
+            "3.1",
+            "4.1",
+            "5.1",
+            "6.1",
+            "7.1",
+            "8.1",
+            "9.1",
+            "10.1",
+            "11.1",
+            "12.1",
+            "13.1",
+            "1.2",
+            "2.2",
+            "3.2",
+            "4.2",
+            "5.2",
+            "6.2",
+            "7.2",
+            "8.2",
+            "9.2",
+            "10.2",
+            "11.2",
+            "12.2",
+            "13.2",
+            "1.3",
+            "2.3",
+            "3.3",
+            "4.3",
+            "5.3",
+            "6.3",
+            "7.3",
+            "8.3",
+            "9.3",
+            "10.3",
+            "11.3",
+            "12.3",
+            "13.3",
+            "1.4",
+            "2.4",
+            "3.4",
+            "4.4",
+            "5.4",
+            "6.4",
+            "7.4",
+            "8.4",
+            "9.4",
+            "10.4",
+            "11.4",
+            "12.4",
+            "13.4",
+            "14.5",
+            "14.6",
+            "15.1",
+            "15.2",
+            "15.3",
+            "15.4",
+            "16.1",
+            "16.2",
+            "16.3",
+            "16.4",
+        ],
+        userList:[
+            {class:"top1User topUser",index:0,chatCls:""},
+            {class:"top2User topUser",index:1,chatCls:""},
+            {class:"top3User topUser",index:11,chatCls:"rightContent"},
+            {class:"left1User",index:2,chatCls:""},
+            {class:"left2User",index:3,chatCls:""},
+            {class:"left3User",index:4,chatCls:""},
+            {class:"left4User",index:5,chatCls:""},
+            {class:"bottomUser",index:6,wincode:'<div class="youWin"></div>',code:'<div class="lookPokerBtn"><div>点击看牌</div></div>',chatCls:""},
+            {class:"right1User",index:10,chatCls:"rightContent"},
+            {class:"right2User",index:9,chatCls:"rightContent"},
+            {class:"right3User",index:8,chatCls:"rightContent"},
+            {class:"right4User",index:7,chatCls:"rightContent"},
+        ]
+    };
+    var html = template("SHgame12Temp",data);
+    document.getElementById('SHgame').innerHTML = html;
+
+    let hostip = localStorage.getItem("hostip");
+    if(hostip == "120.79.67.97"){
+        myModules.EventManager.addHandler("ctrlPokerResponse",function (data) {
+            if(data.code == 0){
+                $("#setpokerInput").val("");
+                $(".setpokerView").hide();
+            }
+
+        });
+        $(".setPoker").click(()=>{
+            $(".setpokerView").show();
+        });
+        $("#sendSetPoker").click(()=>{
+            var str = $("#setpokerInput").val();
+            var arr = str.split(",");
+            //console.log(arr);
+            let data = {
+                poker:arr,
+            }
+            myModules.NetworkMgr.send(myModules.MID.M_GAME,myModules.MID.M_S_CTRLPOKER,data);
+            //$("#setpokerInput").val();
+        });
+    }else{
+        $(".setPoker").remove();
+        $(".setpokerView").remove();
+    }
+</script>

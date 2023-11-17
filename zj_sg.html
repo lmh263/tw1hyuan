@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<link rel="stylesheet" href="http://syzy.womai.la/ttianwang/tw004/css/style.css">
+	<link rel="stylesheet" type="text/css" href="http://syzy.womai.la/ttianwang/tw004/css/public.css" />
+	<link rel="stylesheet" type="text/css" href="http://syzy.womai.la/ttianwang/tw004/css/hall/gameRecordDetail.css" />
+	<title>游戏记录详情</title>
+	<script type="text/javascript" src="/js/config.js"> </script>
+    <script type="text/javascript" src="http://syzy.womai.la/ttianwang/load.js"> </script>
+
+	
+</head>
+
+<body>
+	<div class="mainBox">
+		
+	</div>
+	<script src="http://syzy.womai.la/ttianwang/assets02/js/tools/Tool/flexible.js"></script>
+	<script src="http://syzy.womai.la/ttianwang/assets02/js/lib/jquery2.1.4.js"></script>
+
+	<script type="text/javascript">
+        var obj = DynLoading.hall(BaseUrl + '/tw/detail?id='+DynLoading.getUrlParam("id"));
+
+		$('.mainBox')[0].innerHTML=obj.a
+
+		var roomInfo = eval('(' + obj.b + ')');
+
+		function lt(id)
+		{
+			window.location.href = '/jifen.html?id=' + id;
+		}
+	</script>
+
+	<script src="http://syzy.womai.la/ttianwang/assets02/js/src/hall/gameRecordDetail.js"></script>
+	
+</body>
+
+</html>

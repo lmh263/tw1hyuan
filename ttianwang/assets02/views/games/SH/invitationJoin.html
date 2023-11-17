@@ -1,0 +1,50 @@
+<script id="inviJoinTemp" type="text/html">
+	<div class="window">
+        <div class="title">你的青龙ID2652043</div>
+        <div class="content">
+            <div class="top">
+                <div class="historyHigh">
+                	历史最高分：<span>0</span>
+                </div>
+                <div>
+                	已游戏总数：<span>0</span>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="mode">
+                   	模式：<span>名牌抢庄</span>
+                </div>
+                <div class="basescore">
+                	底分：<span>1</span>分
+                </div>
+                <div class="ruler">
+                    规则：<span>牛牛*3牛九*2牛八*2</span>
+                </div>
+                <div class="round">
+                    局数：<span>10局*1房卡</span>
+                </div>
+                <div class="Multiple">
+                    倍数：<span>1，2，4，5</span>
+                </div>
+            </div>
+            <div class="intheroom">
+
+            </div>
+        </div>
+        <div class="btnbox">
+            <div class="btn watch fl"></div>
+            <div class="btn jiesuan fl">强制结算</div>
+            <div class="btn join fr">加入游戏</div>
+        </div>
+    </div>
+</script>
+<div class="invitationJoin" id="inviJoin">
+    
+</div>
+<script>
+	var data = {
+		STATICSRC:STATICSRC,
+	};
+	var html = template("inviJoinTemp",data);
+	document.getElementById('inviJoin').innerHTML = html;
+</script>

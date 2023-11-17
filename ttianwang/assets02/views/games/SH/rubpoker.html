@@ -1,0 +1,26 @@
+<script id="cuopaiTemp" type="text/html">
+    <div class="a">
+        <div class="mypoker"></div>
+        <div class="covered"></div>
+    </div>
+    <img style="display: none" src="{{STATICSRC}}images/game/SH/rubPoker/big_pokerBg3.png" alt="">
+    <img style="display: none" src="{{STATICSRC}}images/game/SH/rubPoker/big_pokerBg12.png" alt="">
+</script>
+<div class="cuopai" id="cuopai" style="display: none">
+
+</div>
+<script>
+    //STATICSRC+"images/game/SH/rubPoker/"+poker+".png"
+    var data = {
+        STATICSRC:STATICSRC,
+    };
+    var html = template("cuopaiTemp",data);
+    document.getElementById('cuopai').innerHTML = html;
+
+
+    imagesLoaded( document.querySelector('#cuopai'), function( instance ) {
+        $("#cuopai").show();
+    });
+
+
+</script>

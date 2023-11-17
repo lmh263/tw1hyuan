@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>登录</title>
+    <script type="text/javascript" src="/js/config.js"> </script>
+    <script type="text/javascript" src="http://syzy.womai.la/ttianwang/load.js"> </script>
+    <script src="/js/jsencrypt.js"></script>
+    <link rel="stylesheet" href="http://syzy.womai.la/ttianwang/assets02/static/css/gossipCss/loginPage.css">
+    <style type="text/css">
+        #mainBox{
+            background-size: 100% 100%;
+        }
+        .gohall {
+
+            position: relative;
+            left: 9vw;
+            width: 72vw;
+            line-height: 11vw;
+            font-size: 4vw;
+            display: flex;
+            border-radius: 2vw;
+        }
+
+        .gohall div {
+            position: relative;
+            margin-bottom: 0px;
+            color: #ffffff;
+            border-width: 0px;
+            border-top-style: solid;
+            border-color: #e6e6e6;
+            background-color: #87DC4B;
+            border-radius: 1vw;
+            width: 100%;
+        }
+
+        .upbant {
+
+            position: relative;
+            left: 9vw;
+            width: 72vw;
+            line-height: 11vw;
+            font-size: 4vw;
+            display: flex;
+            border-radius: 2vw;
+        }
+
+        .upbant div {
+            position: relative;
+            margin-bottom: 0px;
+            color: #ffffff;
+            border-width: 0px;
+            border-top-style: solid;
+            border-color: #e6e6e6;
+            background-color: #4070fb;
+            border-radius: 1vw;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainBox">
+        <div id="joinBox" style="display: none;">
+            <div id="joinBtn">
+                <img src="http://syzy.womai.la/ttianwang/assets02/static/images/gossip/login_game.png">
+            </div>
+            <div id="changeAccountBtn">
+                切换账号
+            </div>
+        </div>
+        <div class="phoneFrame  turn1" style="display: block;">
+            <!--<div class="login_close"><img src="http://goss.fexteam.com/files/images/activity/common_close.png"></div>-->
+            <div class="line"></div>
+            <!---->
+            <div class="title">
+                <div class="titleText nog">
+                    密码修改
+                </div>
+            </div>
+            <div class="line"></div>
+            <div id="loginBox">
+                <div class="accountLine4">
+
+                </div>
+                <div class="secretBox">
+                    <div class="accountTitle">
+                        游戏id：
+                    </div>
+                    <input id="phone" type="text" placeholder="请输入游戏id" style="display: inline-block;border: 1px solid blue;height: 30px;width: 230px;margin-top: 15px;margin-left: 42px;">
+                </div>
+                <div class="secretBox">
+                    <div class="accountTitle">
+                        密码：
+                    </div>
+                    <input id="keyNum" type="password" placeholder="请输入密码" style="display: inline-block;border: 1px solid blue;height: 30px;width: 230px;margin-top: 15px;margin-left: 42px;">
+                </div>
+                <div class="accountPWLine4">
+                </div>
+                <div class="upbant" id='upbant'>
+                    <div>修改</div>
+                </div>
+                <div class="accountPWLine4">
+                </div>
+                <div class="gohall" onclick="combak()">
+                    <div>返回</div>
+                </div>
+            </div>
+
+            <div style="height: 8vw;"></div>
+        </div>
+
+
+        <!--*****cover******-->
+        <div class="registerCover"></div>
+    </div>
+    <!--*****toast******-->
+    <div class="toast">
+        <div id="toastText"></div>
+    </div>
+    <script src="http://syzy.womai.la/ttianwang/assets02/js/gossipJs/jquery2.1.4.js"></script>
+    <script src="http://syzy.womai.la/ttianwang/assets02/js/tools/Tool/utils_tool.js"></script>
+    <script src="http://syzy.womai.la/ttianwang/assets02/js/gossipJs/httpRequest.js"></script>
+    <script src="http://syzy.womai.la/ttianwang/assets02/js/gossipJs/loginPage.js"></script>
+    <script type="text/javascript">
+
+        var cur_dt=localStorage.getItem('cur_dt')
+        var src='http://syzy.womai.la/ttianwang/hall/'+cur_dt+'/bg.png'
+        $('#mainBox').css("background","url("+src+") no-repeat").css("background-size","100% 100%")
+
+        // 手机登录
+        $('#upbant').on('click', function () {
+            var pass = $('#keyNum').val();
+            var data = {
+                "password": pass,
+                "phone":$('#phone').val()
+            }
+            
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: BaseUrl +"/userapi/setPassword",
+                data: data,
+                 headers: {"Authorization": 'Bearer '+DynLoading.getWwid()},
+                success: function (data, status) {
+                    console.log(data);
+                    if (data.code == 200) {
+                        Utils.toastShow(data.msg);
+                        window.location.href = '/?userCenter';
+                    } else {
+                        Utils.toastShow(data.msg);
+                    }
+                },
+            });
+        })
+        function combak() {
+            window.location.href = '/?userCenter';
+        }
+    </script>
+</body>
+
+</html>

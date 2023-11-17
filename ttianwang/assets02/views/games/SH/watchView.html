@@ -1,0 +1,21 @@
+<script id="watchViewTemp" type="text/html">
+    <div class="window">
+        <div class="title"></div>
+        <div class="close"></div>
+        <div class="btn watchBtn"></div>
+        <div class="btn joinBtn">加入游戏</div>
+        <div class="userlist">
+
+        </div>
+    </div>
+</script>
+<div class="watchView" id="watchView">
+
+</div>
+<script>
+	var data = {
+		STATICSRC:STATICSRC,
+	};
+	var html = template("watchViewTemp",data);
+	document.getElementById('watchView').innerHTML = html;
+</script>
